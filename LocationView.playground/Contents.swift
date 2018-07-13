@@ -30,9 +30,11 @@ class MyViewController: UIViewController {
     }
     
     func multiWordSections() -> LocationView {
+        
         let items = [
             LocationElement(text:"These", backgroundColor: .darkGray, hasArrow: false),
-            LocationElement(text:"together", backgroundColor: .darkGray, hasArrow: true),
+            // Space added or text looks like one word
+            LocationElement(text:" together", backgroundColor: .darkGray, hasArrow: true),
             LocationElement(text:"these", backgroundColor: .lightGray, hasArrow: true),
             LocationElement(text:"separate", backgroundColor: .lightGray, hasArrow: true)
         ]

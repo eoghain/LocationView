@@ -51,16 +51,14 @@ public class LocationView: UIView {
     private func views() -> [UIView] {
         var views:[UIView] = []
         var lastItem: LocationElement?
-        var inset: CGFloat = 0.0
         
         items.forEach { (item) in
             if let lastItem = lastItem, lastItem.hasArrow == true {
                 views.append(arrow(color1: lastItem.backgroundColor, color2: item.backgroundColor))
             }
             
-            views.append(container(for: item, inset: inset))
+            views.append(container(for: item))
             lastItem = item
-            inset = 10
         }
         
         if !views.isEmpty {
@@ -86,13 +84,13 @@ public class LocationView: UIView {
         return arrowView
     }
     
-    private func container(for item: LocationElement, inset: CGFloat) -> UIView {
+    private func container(for item: LocationElement) -> UIView {
         let container = UIView(frame: .zero)
         container.backgroundColor = item.backgroundColor
         
         let label = self.label(for: item)
         container.addSubview(label)
-        label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: inset).isActive = true
+        label.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
         label.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
